@@ -28,7 +28,7 @@ public class NumberExponentiation {
         numberTxt = myScanner.nextLine();  // Read user input
         number = Integer.parseInt(numberTxt);
 
-        System.out.println("Please enter the exponentiation you:");
+        System.out.println("Please enter the power you want rise the number to:");
         powerTxt = myScanner.nextLine();  // Read user input
         power = Integer.parseInt(powerTxt);
 

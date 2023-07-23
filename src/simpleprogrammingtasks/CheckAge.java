@@ -21,9 +21,9 @@ public class CheckAge {
 
     public static void main(String[] args) {
         System.out.println("Please provide the Age");
-
         ageTxt = myScanner.nextLine();  // Read user input
         age = Integer.parseInt(ageTxt);
+        
         if (age < 18) {
             System.out.println("You have to go to school.");
         } else if (age >= 18 && age < 65) {
