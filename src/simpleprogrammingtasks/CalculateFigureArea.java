@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class CalculateFigureArea {
 
-    // Number and exponentiation
+    // Figures and other data
     static String figureType;
     static String sideATxt;
     static String sideBTxt;
