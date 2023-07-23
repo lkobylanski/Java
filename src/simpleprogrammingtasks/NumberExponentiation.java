@@ -27,16 +27,16 @@ public class NumberExponentiation {
         System.out.println("Please enter the number you want to raise to the power:");
         numberTxt = myScanner.nextLine();  // Read user input
         number = Integer.parseInt(numberTxt);
-        
+
         System.out.println("Please enter the exponentiation you:");
         powerTxt = myScanner.nextLine();  // Read user input
         power = Integer.parseInt(powerTxt);
-        
+
         result = Math.pow(number, power);
         answer = String.format(
-            "%s raised to the power of %s equals %s.", number,
-            power, result);
-        
+                "%s raised to the power of %s equals %s.", number,
+                power, result);
+
         System.out.println(answer);
     }
 }
