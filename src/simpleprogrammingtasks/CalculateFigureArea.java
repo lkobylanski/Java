@@ -25,7 +25,6 @@ public class CalculateFigureArea {
 
     public static void main(String[] args) {
         do {
-            //calculateAgain = "";
             System.out.println(
                     "Select whether you want to calculate the area of a triangle or square (rectangle). For triangle type T for square or rectangle type S. To quit press Q."
             );
