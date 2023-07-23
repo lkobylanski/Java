@@ -28,10 +28,12 @@ public class CheckAge {
             System.out.println("You have to go to school.");
         } else if (age >= 18 && age < 65) {
             System.out.println("You can work now and you don't have go to school if don't want to.");
-        } else if (age >= 65) {
+        } else if (age >= 65 && age < 120) {
             System.out.println("You can retire if you want to.");
+        } else if (age > 120 ) {
+            System.out.println("You probably a vampire, so you don't have to go to school or work anyway.");
         } else {
-            System.out.println("Nie możesz iść na emeryturę.");
+            System.out.println("You can't retire yet.");
         }
     }
 }
