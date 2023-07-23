@@ -65,7 +65,7 @@ public class CalculateFigureArea {
                     break;
                 case "Q":
                 case "q":
-                    System.out.println("You've quit operarion.");
+                    System.out.println("You've quit the operarion.");
                     break;
                 default:
                     System.out.println("Provided value is not proper");
