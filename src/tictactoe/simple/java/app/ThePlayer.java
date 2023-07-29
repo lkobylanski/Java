@@ -9,5 +9,13 @@ package tictactoe.simple.java.app;
  * @author lukas
  */
 public class ThePlayer {
-    
+
+    String name;
+    boolean playerOne;
+    boolean isTheWinner;
+
+    public ThePlayer(String name, boolean playerOne) {
+        this.name = name;
+        this.playerOne = playerOne;
+    }
 }
