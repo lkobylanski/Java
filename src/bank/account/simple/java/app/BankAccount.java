@@ -44,6 +44,7 @@ public class BankAccount {
                     System.out.println(String.format("Congratulations you have deposit %s. Your account balance is now: %s", amount, this.balance));
                     isValid = true;
                 } else {
+                    System.out.println(" ");
                     System.out.println("The number must be a positive double. Please try again.");
                 }
             } while (!isValid);
@@ -58,6 +59,7 @@ public class BankAccount {
             boolean isValid = false;
 
             do {
+                System.out.println(" ");
                 System.out.print("Enter the amount money you want to withdraw. Please note only positive double value greater than 0 is accepted: ");
 
                 while (!input.hasNextDouble()) {
@@ -67,13 +69,14 @@ public class BankAccount {
 
                 double amount = input.nextDouble();
 
-                if (amount > 0) {
+                if (amount > 0 && amount <= this.balance) {
                     this.balance -= amount;
                     System.out.println(" ");
                     System.out.println(String.format("Congratulations you have withdraw %s. Your account balance is now: %s", amount, this.balance));
                     isValid = true;
                 } else {
-                    System.out.println("The number must be a positive double. Please try again.");
+                    System.out.println(" ");
+                    System.out.println("The number must be a positive double. And must be less or equal your account balance. Please try again.");
                 }
             } while (!isValid);
         } else {
