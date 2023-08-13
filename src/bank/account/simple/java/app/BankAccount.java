@@ -5,7 +5,6 @@
 package bank.account.simple.java.app;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 /**
  *
@@ -16,7 +15,7 @@ public class BankAccount {
     static Scanner input = new Scanner(System.in);
 
     private double balance = 0.0;
-    private int pin;
+    private final int pin;
 
     public BankAccount(int pin) {
         this.pin = pin;
