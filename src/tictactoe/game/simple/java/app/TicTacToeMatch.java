@@ -23,22 +23,19 @@ public class TicTacToeMatch {
 
     public TicTacToeMatch(String[][] ticTacToeBoard) {
         this.ticTacToeBoard = ticTacToeBoard;
-
+        
+        System.out.println();
         System.out.println("New tic tac toe game started. First player will be using O symbol, second X symbol");
         System.out.println("Player who would 1st set their symbol in a row, column or diagonally will win!");
         System.out.println("Have fun! :)");
     }
 
-    public void setBoardState(int row, int column) {
-        this.ticTacToeBoard[row][column] = this.currentPlayer;
-    }
-
-    public String[][] makeAMove(String[][] currentBoard, int row, int columns) {
+    public void makeAMove(String[][] currentBoard, int row, int columns) {
         int playerInputRow;
         int playerInputCol;
 
         System.out.println(String.format(
-                "Now player %s please make a move. Please first enter a row number in range 1 - 3 then the same for the columns. Remeber you can only select empty fields.",
+                "Now player %s is making a move. Note: Please first enter a row number in range 1 - 3 then the same for the columns. Remeber you can only select empty fields.",
                 this.currentPlayer
         ));
 
@@ -86,18 +83,45 @@ public class TicTacToeMatch {
         } while (currentBoard[playerInputRow][playerInputCol].equalsIgnoreCase("X") || currentBoard[playerInputRow][playerInputCol].equalsIgnoreCase("Y"));
 
         // If all conditions  was fulfilled set the X or O value at the selected field
-        currentBoard[playerInputRow][playerInputCol] = this.currentPlayer;
+        currentBoard[playerInputRow - 1][playerInputCol - 1] = this.currentPlayer;
+        this.ticTacToeBoard = currentBoard;
 
-        //Check if player won the game
+        // Check if player won the game
         
-        
-        
-        if (this.currentPlayer.equals(playerO)) {
-            this.currentPlayer = playerX;
-        } else {
-            this.currentPlayer = playerO;
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+            if (currentBoard[i][0].equals(currentBoard[i][1]) && currentBoard[i][1].equals(currentBoard[i][2])) {
+                this.isWinner = this.currentPlayer;
+            }
         }
 
-        return currentBoard;
+        // Check columns
+        for (int i = 0; i < 3; i++) {
+            if (currentBoard[0][i].equals(currentBoard[1][i]) && currentBoard[1][i].equals(currentBoard[2][i])) {
+                this.isWinner = this.currentPlayer;
+            }
+        }
+
+        // Check diagonals
+        if (currentBoard[0][0].equals(currentBoard[1][1]) && currentBoard[1][1].equals(currentBoard[2][2])) {
+            this.isWinner = this.currentPlayer;
+        }
+        if (currentBoard[0][2].equals(currentBoard[1][1]) && currentBoard[1][1].equals(currentBoard[2][0])) {
+            this.isWinner = this.currentPlayer;
+        }
+    }
+
+    public boolean checkIfThereIsWinner() {
+        boolean someOneWon = false;
+        if (this.isWinner.equals("true")) {
+            someOneWon = true;
+        } else {
+            if (this.currentPlayer.equals(playerO)) {
+                this.currentPlayer = playerX;
+            } else {
+                this.currentPlayer = playerO;
+            }
+        }
+        return someOneWon;
     }
 }
