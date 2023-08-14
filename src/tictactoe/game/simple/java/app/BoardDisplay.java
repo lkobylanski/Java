@@ -20,10 +20,20 @@ public class BoardDisplay {
         }
     }
 
+    public String[][] getCurrentBoard() {
+        return this.ticTacToeBoard;
+    }
+
+    public String[][] setCurrentBoard(String[][] ticTacToeBoard) {
+        this.ticTacToeBoard = ticTacToeBoard;
+        
+        return this.ticTacToeBoard;
+    }
+
     public void displayCurrentBoardState() {
         System.out.println();
         System.out.println();
-        
+
         for (int i = 0; i < this.ticTacToeBoard.length; i++) {
             for (int j = 0; j < this.ticTacToeBoard[i].length; j++) {
                 System.out.print(this.ticTacToeBoard[i][j]);
@@ -36,18 +46,5 @@ public class BoardDisplay {
                 System.out.println("---------");
             }
         }
-    }
-
-    public void setBoardState(String player, int row, int column) {
-        this.ticTacToeBoard[row][column] = player;
-        displayCurrentBoardState();
-    }
-    
-    public static void main(String[] args) {
-        BoardDisplay newBoard = new BoardDisplay();
-        
-        newBoard.displayCurrentBoardState();
-
-        newBoard.setBoardState("X", 1, 1);
     }
 }
