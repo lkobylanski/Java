@@ -81,10 +81,10 @@ public class TicTacToeMatch {
                 }
             } while (playerInputCol < 1 || playerInputCol > 3);
 
-            if (currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("X") || currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("Y")) {
+            if (currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("X") || currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("O")) {
                 System.out.println("The field is already taken! Try to pick another field.");
             }
-        } while (currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("X") || currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("Y"));
+        } while (currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("X") || currentBoard[playerInputRow - 1][playerInputCol - 1].equalsIgnoreCase("O"));
 
         // If all conditions  was fulfilled set the X or O value at the selected field
         currentBoard[playerInputRow - 1][playerInputCol - 1] = this.currentPlayer;
