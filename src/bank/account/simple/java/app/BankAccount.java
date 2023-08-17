@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author lukas
  */
 public class BankAccount {
-    
+
 // Add scanner object
     static Scanner input = new Scanner(System.in);
 
@@ -58,27 +58,31 @@ public class BankAccount {
 
             boolean isValid = false;
 
-            do {
-                System.out.println(" ");
-                System.out.print("Enter the amount money you want to withdraw. Please note only positive double value greater than 0 is accepted: ");
-
-                while (!input.hasNextDouble()) {
-                    String invalidInput = input.next();
-                    System.out.println(invalidInput + " is not a valid double. Please enter a positive double value: ");
-                }
-
-                double amount = input.nextDouble();
-
-                if (amount > 0 && amount <= this.balance) {
-                    this.balance -= amount;
+            if (this.balance <= 0) {
+                System.out.println("You can not withdraw any money, your account balance is: " + this.balance + ", closing operation.");
+            } else {
+                do {
                     System.out.println(" ");
-                    System.out.println(String.format("Congratulations you have withdraw %s. Your account balance is now: %s", amount, this.balance));
-                    isValid = true;
-                } else {
-                    System.out.println(" ");
-                    System.out.println("The number must be a positive double. And must be less or equal your account balance. Please try again.");
-                }
-            } while (!isValid);
+                    System.out.print("Enter the amount money you want to withdraw. Please note only positive double value greater than 0 is accepted. To enter Q: ");
+
+                    while (!input.hasNextDouble()) {
+                        String invalidInput = input.next();
+                        System.out.println(invalidInput + " is not a valid double. Please enter a positive double value: ");
+                    }
+
+                    double amount = input.nextDouble();
+
+                    if (amount > 0 && amount <= this.balance) {
+                        this.balance -= amount;
+                        System.out.println(" ");
+                        System.out.println(String.format("Congratulations you have withdraw %s. Your account balance is now: %s", amount, this.balance));
+                        isValid = true;
+                    } else {
+                        System.out.println(" ");
+                        System.out.println("The number must be a positive double. And must be less or equal your account balance. Please try again.");
+                    }
+                } while (!isValid);
+            }
         } else {
             System.out.println(" ");
             System.out.println("Wrong pin!");
@@ -160,22 +164,22 @@ public class BankAccount {
                 case "B":
                 case "b":
                     System.out.println("Please provide you PIN to access the account: ");
-                    
+
                     while (!input.hasNextInt()) {
                         String invalidInput = input.next();
                         System.out.println(invalidInput + " is not a valid PIN. Please try again: ");
                     }
-                    
+
                     providedPin = input.nextInt();
-                    
+
                     double yourBalance = myAcc.getAccBalance(providedPin);
-                    
+
                     System.out.println(" ");
-                    System.out.println(String.format("Your account balance is: %s", yourBalance));                   
+                    System.out.println(String.format("Your account balance is: %s", yourBalance));
                     break;
                 case "Q":
                 case "q":
-                    stopProgram = true;                  
+                    stopProgram = true;
                     break;
                 default:
                     System.out.println(" ");
