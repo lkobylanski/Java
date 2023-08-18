@@ -14,23 +14,34 @@ import java.lang.Math;
 public class NumberExponentiation {
 
     // Number and exponentiation
-    static String numberTxt;
-    static String powerTxt;
     static String answer;
     static int number;
     static int power;
     static double result;
     // Add scanner object
-    static Scanner myScanner = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
+
         System.out.println("Please enter the number you want to raise to the power:");
-        numberTxt = myScanner.nextLine();  // Read user input
-        number = Integer.parseInt(numberTxt);
+
+        while (!input.hasNextInt()) {
+            String invalidInput = input.next();
+            System.out.println(invalidInput + " is not a valid Int. Please enter an int value:");
+            input.next(); // Clear the invalid input
+        }
+
+        number = input.nextInt();
 
         System.out.println("Please enter the power you want rise the number to:");
-        powerTxt = myScanner.nextLine();  // Read user input
-        power = Integer.parseInt(powerTxt);
+
+        while (!input.hasNextInt()) {
+            String invalidInput = input.next();
+            System.out.println(invalidInput + " is not a valid Int. Please enter an int value:");
+            input.next(); // Clear the invalid input
+        }
+        
+        power = input.nextInt();
 
         result = Math.pow(number, power);
         answer = String.format(

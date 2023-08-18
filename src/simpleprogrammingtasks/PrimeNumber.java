@@ -13,17 +13,24 @@ import java.util.Scanner;
 public class PrimeNumber {
 
     // User's input data
-    static String enteredNumberTxt;
     static int enteredNumber;
     // Flag for prime no.
     static boolean flag = false;
     // Add scanner object
-    static Scanner myScanner = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Please enter the number to check if it is prime:");
-        enteredNumberTxt = myScanner.nextLine();
-        enteredNumber = Integer.parseInt(enteredNumberTxt);
+        do {
+            System.out.println("Please enter the number to check if it is prime (positive number greater than 1):");
+
+            while (!input.hasNextInt()) {
+                String invalidInput = input.next();
+                System.out.println(invalidInput + " is not a valid Int. Please enter an int value:");
+            }
+
+            enteredNumber = input.nextInt();
+
+        } while (enteredNumber <= 1);
 
         for (int i = 2; i < enteredNumber; i++) {
             // condition for nonprime number
