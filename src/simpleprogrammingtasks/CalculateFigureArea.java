@@ -21,47 +21,68 @@ public class CalculateFigureArea {
     static int sideB;
     static double result;
     // Add scanner object
-    static Scanner myScanner = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         do {
             System.out.println(
                     "Select whether you want to calculate the area of a triangle or square (rectangle). For triangle type T for square or rectangle type S. To quit press Q."
             );
-            figureType = myScanner.nextLine();  // Read user input
+            figureType = input.next();  // Read user input
 
             switch (figureType) {
                 case "T":
                 case "t":
-                    System.out.println("Please enter the length of the triangle's base:");
-                    sideATxt = myScanner.nextLine();
-                    sideA = Integer.parseInt(sideATxt);
+                    double[] userInputTriangle = new double[2];
 
-                    System.out.println("Please enter the height of the triangle:");
-                    sideBTxt = myScanner.nextLine();
-                    sideB = Integer.parseInt(sideBTxt);
+                    for (int i = 0; i < userInputTriangle.length; i++) {
+                        do {
+                            if (i == 0) {
+                                System.out.println("Please enter length of the triangle base (positive integer is accepted only)");
+                            } else {
+                                System.out.println("Please enter length of the triangle height (positive integer is accepted only)");
+                            }
 
-                    result = sideA * sideB / 2;
+                            while (!input.hasNextDouble()) {
+                                String invalidInput = input.next();
+                                System.out.println(invalidInput + " is not a valid double. Please enter a positive double value: ");
+                            }
 
+                            userInputTriangle[i] = input.nextDouble();
+
+                        } while (userInputTriangle[i] <= 0);
+                    }
+
+                    result = userInputTriangle[0] * userInputTriangle[1] / 2;
                     System.out.println("Area of the triangle equals: " + result);
+
                     break;
+
                 case "S":
                 case "s":
-                    System.out.println("Please enter the length of the figure's first side:");
-                    sideATxt = myScanner.nextLine();
-                    sideA = Integer.parseInt(sideATxt);
+                    double[] userInputRectangle = new double[2];
 
-                    System.out.println("Please enter the length of the figure's second side:");
-                    sideBTxt = myScanner.nextLine();
-                    sideB = Integer.parseInt(sideBTxt);
+                    for (int i = 0; i < userInputRectangle.length; i++) {
+                        do {
+                            if (i == 0) {
+                                System.out.println("Please enter length of the rectangle sideA (positive integer is accepted only)");
+                            } else {
+                                System.out.println("Please enter length of the rectangle sideB (positive integer is accepted only)");
+                            }
 
-                    result = sideA * sideB;
+                            while (!input.hasNextDouble()) {
+                                String invalidInput = input.next();
+                                System.out.println(invalidInput + " is not a valid double. Please enter a positive double value: ");
+                            }
 
-                    if (sideA == sideB) {
-                        System.out.println("Area of the square equals: " + result);
-                    } else {
-                        System.out.println("Area of the rectangle equals: " + result);
+                            userInputRectangle[i] = input.nextDouble();
+
+                        } while (userInputRectangle[i] <= 0);
                     }
+
+                    result = userInputRectangle[0] * userInputRectangle[1];
+                    System.out.println("Area of the rectangle equals: " + result);
+
                     break;
                 case "Q":
                 case "q":
@@ -70,9 +91,10 @@ public class CalculateFigureArea {
                 default:
                     System.out.println("Provided value is not proper");
             }
+
             System.out.println("Try again? To continue eneter Y.");
-            calculateAgain = myScanner.nextLine();
-            System.out.println(calculateAgain);
+            calculateAgain = input.next();
+
         } while (calculateAgain.equalsIgnoreCase("y"));
     }
 }

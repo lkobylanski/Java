@@ -14,16 +14,28 @@ public class CheckAge {
 
     // Depending on given person's age return some infomration 
     static int providedAge;
-    static String ageTxt;
     static int age;
     // Add scanner object
-    static Scanner myScanner = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Please provide the Age");
-        ageTxt = myScanner.nextLine();  // Read user input
-        age = Integer.parseInt(ageTxt);
-        
+
+        do {
+            if (age <= 0) {
+                System.out.println("Please provide the positive number gerater than 0");
+            } else {
+                System.out.println("Please provide the Age");
+            }
+
+            while (!input.hasNextInt()) {
+                String invalidInput = input.next();
+                System.out.println(invalidInput + " is not a valid int. Please enter a positive int value: ");
+            }
+
+            age = input.nextInt();
+
+        } while (age <= 0);
+
         if (age < 18) {
             System.out.println("You have to go to school.");
         } else if (age >= 18 && age < 65) {
