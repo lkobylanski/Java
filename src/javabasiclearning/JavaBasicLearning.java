@@ -9,7 +9,6 @@ package javabasiclearning;
  * @author lukas
  */
 public class JavaBasicLearning {
-
     /**
      * @param args the command line arguments
      */
